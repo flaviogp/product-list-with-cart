@@ -1,20 +1,17 @@
 import data from "../utils/data.json";
-import { Product } from "../utils/types";
+import { ProductType } from "../utils/types";
+import ProductItem from "./product-item";
 const ProductList = () => {
-  const products: Product[] = JSON.parse(JSON.stringify(data));
+  const products: ProductType[] = JSON.parse(JSON.stringify(data));
   return (
     <>
-      <h1 className="font bold">Desserts</h1>
-      <div className="grid grid-cols-3">
-        {products.map((product) => (
-          <div className="w-48 h-48" key={product.name}>
-            <img
-              alt={product.name}
-              src={product.image.desktop}
-              className="w-full h-full"
-            />
-          </div>
-        ))}
+      <div className="flex flex-col space-y-6 p-3">
+        <h1 className="font-bold  text-4xl">Desserts</h1>
+        <div className="grid grid-cols-3 gap-6">
+          {products.map((product) => (
+            <ProductItem product={product} />
+          ))}
+        </div>
       </div>
     </>
   );
