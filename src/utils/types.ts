@@ -9,3 +9,11 @@ export type ProductType =  {
     category: string
     price: number
 }
+
+
+export type CartProductType = {
+    name: string
+    category: string
+    price: number
+    quantity: number
+}

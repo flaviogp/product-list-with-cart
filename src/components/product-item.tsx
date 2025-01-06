@@ -1,11 +1,15 @@
 import { ShoppingCartIcon } from "lucide-react";
-import { ProductType } from "../utils/types";
+import { CartProductType, ProductType } from "../utils/types";
 
 interface ProductItemProps {
   product: ProductType;
+  handdleAddProductToCart: (product: CartProductType) => void;
 }
 
-const ProductItem = ({ product }: ProductItemProps) => {
+const ProductItem = ({
+  product,
+  handdleAddProductToCart,
+}: ProductItemProps) => {
   return (
     <div className="flex flex-col ">
       <div className=" flex w-full justify-center relative mb-8">
@@ -16,7 +20,10 @@ const ProductItem = ({ product }: ProductItemProps) => {
           height={300}
           className="rounded-lg"
         />
-        <button className="flex gap-3 bg-white py-2 px-4  absolute bottom-[-22px] border border-solid border-button-color rounded-full">
+        <button
+          className="flex gap-3 bg-white py-2 px-4  absolute bottom-[-22px] border border-solid border-button-color rounded-full"
+          onClick={() => handdleAddProductToCart({ ...product, quantity: 1 })}
+        >
           <ShoppingCartIcon className="text-button-color" />
           <p className="font-semibold">Add to Cart</p>
         </button>
