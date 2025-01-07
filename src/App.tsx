@@ -9,11 +9,12 @@ function App() {
   const [cartList, setCartList] = useState<CartProductType[]>([]);
 
   const handdleAddProductToCart = (product: CartProductType) => {
+    return setCartList([...cartList, product]);
+  };
+  const handdleIncreaseProductToCart = (product: CartProductType) => {
     const oldList = [...cartList];
     const oldProduct = oldList.find((p) => p.name === product.name);
-    if (!oldProduct) {
-      return setCartList([...cartList, product]);
-    }
+    if (!oldProduct) return;
     const productIndex = oldList.indexOf(oldProduct);
     oldList.splice(productIndex, 1);
     console.log("old ->", oldList);
@@ -21,10 +22,20 @@ function App() {
       ...oldList,
       { ...oldProduct, quantity: oldProduct.quantity + 1 },
     ]);
-    console.log(cartList);
   };
-  // const handdleIncreaseProductToCart = () => {};
-  // const handdleDecreaseProductToCart = () => {};
+  const handdleDecreaseProductToCart = (product: CartProductType) => {
+    const oldList = [...cartList];
+    const oldProduct = oldList.find((p) => p.name === product.name);
+    if (!oldProduct) return;
+    const productIndex = oldList.indexOf(oldProduct);
+    oldList.splice(productIndex, 1);
+    console.log("old ->", oldList);
+    if (oldProduct.quantity === 0) return;
+    setCartList([
+      ...oldList,
+      { ...oldProduct, quantity: oldProduct.quantity - 1 },
+    ]);
+  };
 
   return (
     <>
@@ -32,6 +43,9 @@ function App() {
         <ProductList
           products={products}
           handdleAddProductToCart={handdleAddProductToCart}
+          handdleIncreaseProductToCart={handdleIncreaseProductToCart}
+          handdleDecreaseProductToCart={handdleDecreaseProductToCart}
+          cartList={cartList}
         />
         <Cart productList={cartList} />
       </div>

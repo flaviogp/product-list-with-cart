@@ -23,9 +23,9 @@ const Cart = ({ productList }: CartProps) => {
                 <div className="flex flex-col gap-2">
                   <p className="font-semibold">{product.name}</p>
                   <div className="flex gap-4">
-                    <span>4x</span>
-                    <span>@$7,00</span>
-                    <span>$28.00</span>
+                    <span>{product.quantity}</span>
+                    <span>{product.price}</span>
+                    <span>{product.price * product.quantity}</span>
                   </div>
                 </div>
 

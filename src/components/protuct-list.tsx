@@ -4,11 +4,17 @@ import ProductItem from "./product-item";
 interface ProductListProps {
   products: ProductType[];
   handdleAddProductToCart: (product: CartProductType) => void;
+  handdleIncreaseProductToCart: (product: CartProductType) => void;
+  handdleDecreaseProductToCart: (product: CartProductType) => void;
+  cartList: CartProductType[];
 }
 
 const ProductList = ({
   products,
   handdleAddProductToCart,
+  cartList,
+  handdleIncreaseProductToCart,
+  handdleDecreaseProductToCart,
 }: ProductListProps) => {
   return (
     <>
@@ -20,6 +26,9 @@ const ProductList = ({
               key={product.name}
               product={product}
               handdleAddProductToCart={handdleAddProductToCart}
+              handdleIncreaseProductToCart={handdleIncreaseProductToCart}
+              handdleDecreaseProductToCart={handdleDecreaseProductToCart}
+              cartList={cartList}
             />
           ))}
         </div>
