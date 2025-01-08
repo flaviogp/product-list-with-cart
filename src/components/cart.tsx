@@ -1,18 +1,39 @@
-import { XIcon } from "lucide-react";
-import EmptyCartImage from "../../public/images/illustration-empty-cart.svg";
+import {
+  TreeDeciduous,
+  TreePalm,
+  TreePine,
+  TreesIcon,
+  XIcon,
+} from "lucide-react";
 import { CartProductType } from "../utils/types";
+import EmptyCart from "./empty-cart";
+import { useEffect, useState } from "react";
 
 interface CartProps {
   productList: CartProductType[];
 }
 
 const Cart = ({ productList }: CartProps) => {
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    const handleGetTotalPrice = () => {
+      let total = 0;
+      productList.map((product) => {
+        total += product.price * product.quantity;
+      });
+
+      return setTotalPrice(total);
+    };
+    handleGetTotalPrice();
+  }, [productList]);
+
   return (
     <div className=" rounded-md px-6 py-10 gap-6 w-[500px] h-max flex bg-white flex-col items-center">
       <h2 className="w-full font-bold text-2xl text-button-color">
         {`Your Cart (${productList ? productList.length : "0"}`})
       </h2>
-      <div className="flex flex-col gap-6 w-full">
+      <div className="flex flex-col gap-6 w-full items-center">
         {productList.length !== 0 ? (
           <>
             {productList.map((product, index) => (
@@ -36,19 +57,26 @@ const Cart = ({ productList }: CartProps) => {
             ))}
           </>
         ) : (
-          <>
-            <img
-              src={EmptyCartImage}
-              alt="Empty cart"
-              width={150}
-              height={150}
-            />
-            <p className="text-secondary-color font-semibold text-lg">
-              Your added items will appear here.
-            </p>
-          </>
+          <EmptyCart />
         )}
       </div>
+      {productList.length !== 0 && (
+        <div className="flex flex-col gap-6 w-full items-center">
+          <div className="flex w-full justify-between">
+            <p className="text-lg">Order Total</p>
+            <p className="text-2xl font-bold">{totalPrice}</p>
+          </div>
+          <div className="flex p-4 bg-rose-100 w-full rounded-md justify-center">
+            <span className="flex gap-2 text-rose-900">
+              <TreeDeciduous />
+              This is a <b>carbon-neutral</b> delivery
+            </span>
+          </div>
+          <button className="w-full bg-button-color py-5 rounded-full text-xl text-white font-semibold hover:bg-button-color-hover">
+            Confirm Order
+          </button>
+        </div>
+      )}
     </div>
   );
 };
