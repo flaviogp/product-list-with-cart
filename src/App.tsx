@@ -30,7 +30,7 @@ function App() {
     const productIndex = oldList.indexOf(oldProduct);
     oldList.splice(productIndex, 1);
     console.log("old ->", oldList);
-    if (oldProduct.quantity === 0) return;
+    if (oldProduct.quantity === 1) return;
     setCartList([
       ...oldList,
       { ...oldProduct, quantity: oldProduct.quantity - 1 },
