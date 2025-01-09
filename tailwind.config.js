@@ -14,7 +14,8 @@ module.exports = {
         "rose-500": "hsl(12, 20%, 44%)",
         "rose-900": "hsl(14, 65%, 9%)",
 
-      }
+      },
+      padding: ['last']
     },
   },
   plugins: [],

@@ -1,13 +1,8 @@
-import {
-  TreeDeciduous,
-  TreePalm,
-  TreePine,
-  TreesIcon,
-  XIcon,
-} from "lucide-react";
+import { TreeDeciduous, XIcon } from "lucide-react";
 import { CartProductType } from "../utils/types";
 import EmptyCart from "./empty-cart";
 import { useEffect, useState } from "react";
+import formatCurency from "../utils/format-currency";
 
 interface CartProps {
   productList: CartProductType[];
@@ -29,24 +24,26 @@ const Cart = ({ productList }: CartProps) => {
   }, [productList]);
 
   return (
-    <div className=" rounded-md px-6 py-10 gap-6 w-[500px] h-max flex bg-white flex-col items-center">
+    <div className=" rounded-md px-6 py-10 gap-6 w-[500px] h-max max-h-[700px] flex bg-white flex-col items-center">
       <h2 className="w-full font-bold text-2xl text-button-color">
         {`Your Cart (${productList ? productList.length : "0"}`})
       </h2>
-      <div className="flex flex-col gap-6 w-full items-center">
+      <div className="flex flex-col  w-full items-center overflow-y-scroll [&::-webkit-scrollbar]:hidden ">
         {productList.length !== 0 ? (
           <>
             {productList.map((product, index) => (
               <div
                 key={product.name + index}
-                className="flex w-full justify-between border-b py-4"
+                className="flex w-full justify-between items-center border-t py-6 first:border-none"
               >
                 <div className="flex flex-col gap-2">
                   <p className="font-semibold">{product.name}</p>
                   <div className="flex gap-4">
                     <span>{product.quantity}</span>
-                    <span>{product.price}</span>
-                    <span>{product.price * product.quantity}</span>
+                    <span>@{formatCurency(product.price)}</span>
+                    <span>
+                      {formatCurency(product.price * product.quantity)}
+                    </span>
                   </div>
                 </div>
 
@@ -61,10 +58,10 @@ const Cart = ({ productList }: CartProps) => {
         )}
       </div>
       {productList.length !== 0 && (
-        <div className="flex flex-col gap-6 w-full items-center">
+        <div className="flex flex-col gap-6 w-full items-center border-t pt-6">
           <div className="flex w-full justify-between">
             <p className="text-lg">Order Total</p>
-            <p className="text-2xl font-bold">{totalPrice}</p>
+            <p className="text-2xl font-bold">{formatCurency(totalPrice)}</p>
           </div>
           <div className="flex p-4 bg-rose-100 w-full rounded-md justify-center">
             <span className="flex gap-2 text-rose-900">
