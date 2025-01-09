@@ -17,7 +17,6 @@ function App() {
     if (!oldProduct) return;
     const productIndex = oldList.indexOf(oldProduct);
     oldList.splice(productIndex, 1);
-    console.log("old ->", oldList);
     setCartList([
       ...oldList,
       { ...oldProduct, quantity: oldProduct.quantity + 1 },
@@ -29,12 +28,20 @@ function App() {
     if (!oldProduct) return;
     const productIndex = oldList.indexOf(oldProduct);
     oldList.splice(productIndex, 1);
-    console.log("old ->", oldList);
     if (oldProduct.quantity === 1) return;
     setCartList([
       ...oldList,
       { ...oldProduct, quantity: oldProduct.quantity - 1 },
     ]);
+  };
+
+  const handleDeleteProductToCart = (product: CartProductType) => {
+    const oldList = [...cartList];
+    const oldProduct = oldList.find((p) => p.name === product.name);
+    if (!oldProduct) return;
+    const productIndex = oldList.indexOf(oldProduct);
+    oldList.splice(productIndex, 1);
+    setCartList([...oldList]);
   };
 
   return (
@@ -47,7 +54,10 @@ function App() {
           handdleDecreaseProductToCart={handdleDecreaseProductToCart}
           cartList={cartList}
         />
-        <Cart productList={cartList} />
+        <Cart
+          productList={cartList}
+          handleDeleteProductToCart={handleDeleteProductToCart}
+        />
       </div>
     </>
   );

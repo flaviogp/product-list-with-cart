@@ -6,9 +6,10 @@ import formatCurency from "../utils/format-currency";
 
 interface CartProps {
   productList: CartProductType[];
+  handleDeleteProductToCart: (ProductType: CartProductType) => void;
 }
 
-const Cart = ({ productList }: CartProps) => {
+const Cart = ({ productList, handleDeleteProductToCart }: CartProps) => {
   const [totalPrice, setTotalPrice] = useState(0);
 
   useEffect(() => {
@@ -37,17 +38,24 @@ const Cart = ({ productList }: CartProps) => {
                 className="flex w-full justify-between items-center border-t py-6 first:border-none"
               >
                 <div className="flex flex-col gap-2">
-                  <p className="font-semibold">{product.name}</p>
-                  <div className="flex gap-4">
-                    <span>{product.quantity}</span>
-                    <span>@{formatCurency(product.price)}</span>
-                    <span>
+                  <p className="font-semibold text-lg">{product.name}</p>
+                  <div className="flex gap-4 text-md">
+                    <span className="text-button-color font-semibold">
+                      {product.quantity}x
+                    </span>
+                    <span className="text-secondary-color">
+                      @{formatCurency(product.price)}
+                    </span>
+                    <span className="text-secondary-color font-semibold">
                       {formatCurency(product.price * product.quantity)}
                     </span>
                   </div>
                 </div>
 
-                <button className=" w-6 h-6 flex items-center justify-center border border-solod rounded-full">
+                <button
+                  className=" w-6 h-6 flex items-center justify-center border border-solid border-rose-400 rounded-full text-rose-400 hover:text-rose-900 hover:border-rose-900"
+                  onClick={() => handleDeleteProductToCart(product)}
+                >
                   <XIcon size={16} />
                 </button>
               </div>
