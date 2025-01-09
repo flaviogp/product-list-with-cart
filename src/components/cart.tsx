@@ -3,6 +3,7 @@ import { CartProductType } from "../utils/types";
 import EmptyCart from "./empty-cart";
 import { useEffect, useState } from "react";
 import formatCurency from "../utils/format-currency";
+import ConfirmedOrderModel from "./confirmed-order-model";
 
 interface CartProps {
   productList: CartProductType[];
@@ -11,6 +12,7 @@ interface CartProps {
 
 const Cart = ({ productList, handleDeleteProductToCart }: CartProps) => {
   const [totalPrice, setTotalPrice] = useState(0);
+  const [orderConfirmed, setOrderConfirmed] = useState(false);
 
   useEffect(() => {
     const handleGetTotalPrice = () => {
@@ -23,6 +25,8 @@ const Cart = ({ productList, handleDeleteProductToCart }: CartProps) => {
     };
     handleGetTotalPrice();
   }, [productList]);
+
+  const handleOpenConfirmedOrderModel = () => setOrderConfirmed(true);
 
   return (
     <div className=" rounded-md px-6 py-10 gap-6 w-[500px] h-max max-h-[700px] flex bg-white flex-col items-center">
@@ -77,10 +81,19 @@ const Cart = ({ productList, handleDeleteProductToCart }: CartProps) => {
               This is a <b>carbon-neutral</b> delivery
             </span>
           </div>
-          <button className="w-full bg-button-color py-5 rounded-full text-xl text-white font-semibold hover:bg-button-color-hover">
+          <button
+            className="w-full bg-button-color py-5 rounded-full text-xl text-white font-semibold hover:bg-button-color-hover"
+            onClick={handleOpenConfirmedOrderModel}
+          >
             Confirm Order
           </button>
         </div>
+      )}
+      {orderConfirmed && (
+        <ConfirmedOrderModel
+          productList={productList}
+          totalPrice={totalPrice}
+        />
       )}
     </div>
   );
