@@ -7,7 +7,7 @@ interface ConfirmedProductListProps {
 
 const ConfirmedProdutList = ({ productList }: ConfirmedProductListProps) => {
   return (
-    <div className="rounded-lg overflow-y-scroll [&::-webkit-scrollbar]:hidden max-h-[200px]">
+    <div className="rounded-lg overflow-y-scroll [&::-webkit-scrollbar]:hidden max-h-[250px]">
       {productList.map((product) => (
         <ConfirmedProductItem product={product} key={product.name} />
       ))}

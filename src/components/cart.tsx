@@ -29,7 +29,7 @@ const Cart = ({ productList, handleDeleteProductToCart }: CartProps) => {
   const handleOpenConfirmedOrderModel = () => setOrderConfirmed(true);
 
   return (
-    <div className=" rounded-md px-6 py-10 gap-6 w-[500px] h-max max-h-[700px] flex bg-white flex-col items-center">
+    <div className=" rounded-lg px-6 py-10 gap-6 w-[500px] h-max max-h-[700px] flex bg-white flex-col items-center">
       <h2 className="w-full font-bold text-2xl text-button-color">
         {`Your Cart (${productList ? productList.length : "0"}`})
       </h2>
@@ -42,7 +42,9 @@ const Cart = ({ productList, handleDeleteProductToCart }: CartProps) => {
                 className="flex w-full justify-between items-center border-t py-6 first:border-none"
               >
                 <div className="flex flex-col gap-2">
-                  <p className="font-semibold text-lg">{product.name}</p>
+                  <p className="font-semibold text-lg text-rose-900">
+                    {product.name}
+                  </p>
                   <div className="flex gap-4 text-md">
                     <span className="text-button-color font-semibold">
                       {product.quantity}x
@@ -71,7 +73,7 @@ const Cart = ({ productList, handleDeleteProductToCart }: CartProps) => {
       </div>
       {productList.length !== 0 && (
         <div className="flex flex-col gap-6 w-full items-center border-t pt-6">
-          <div className="flex w-full justify-between">
+          <div className="flex w-full justify-between text-rose-900">
             <p className="text-lg">Order Total</p>
             <p className="text-2xl font-bold">{formatCurency(totalPrice)}</p>
           </div>

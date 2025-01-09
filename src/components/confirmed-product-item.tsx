@@ -1,7 +1,7 @@
 import data from "../utils/data.json";
 import formatCurency from "../utils/format-currency";
 
-import { CartProductType } from "../utils/types";
+import { CartProductType, ProductType } from "../utils/types";
 
 interface ConfirmedProductItemProps {
   product: CartProductType;
@@ -9,10 +9,10 @@ interface ConfirmedProductItemProps {
 
 const ConfirmedProductItem = ({ product }: ConfirmedProductItemProps) => {
   const getProductImage = (product: CartProductType) => {
-    const productList = JSON.parse(JSON.stringify(data));
+    const productList: ProductType[] = JSON.parse(JSON.stringify(data));
 
     const p = productList.find((p) => p.name === product.name);
-    return p.image.desktop;
+    return p?.image.desktop;
   };
   getProductImage(product);
   return (

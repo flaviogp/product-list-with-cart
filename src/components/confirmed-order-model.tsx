@@ -14,7 +14,7 @@ const ConfirmedOrderModel = ({
 }: ConfirmedOrderModelProps) => {
   return (
     <div className="fixed h-[100%] w-[100%] bg-black/50 top-0 left-0 flex items-center justify-center">
-      <div className="bg-white flex flex-col space-y-7 p-5 rounded-lg w-[500px] max-h-[500px]">
+      <div className="bg-white flex flex-col space-y-7 p-5 rounded-lg w-[500px] max-h-[600px]">
         <div className=" w-8 h-8 flex justify-center items-center border-2 border-solid border-secondary-color rounded-full">
           <CheckIcon className="text-secondary-color font-bold" size={16} />
         </div>

@@ -17,10 +17,11 @@ function App() {
     if (!oldProduct) return;
     const productIndex = oldList.indexOf(oldProduct);
     oldList.splice(productIndex, 1);
-    setCartList([
+    const newList = [
       ...oldList,
       { ...oldProduct, quantity: oldProduct.quantity + 1 },
-    ]);
+    ].reverse();
+    setCartList(newList);
   };
   const handdleDecreaseProductToCart = (product: CartProductType) => {
     const oldList = [...cartList];
