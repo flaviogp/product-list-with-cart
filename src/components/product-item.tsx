@@ -1,23 +1,18 @@
 import { DiamondMinus, DiamondPlus, ShoppingCartIcon } from "lucide-react";
-import { CartProductType, ProductType } from "../utils/types";
-
+import { ProductType } from "../utils/types";
+import { useCartContext } from "../contexts/cart-context";
 interface ProductItemProps {
   product: ProductType;
-  handdleAddProductToCart: (product: CartProductType) => void;
-  handdleIncreaseProductToCart: (product: CartProductType) => void;
-  handdleDecreaseProductToCart: (product: CartProductType) => void;
-  cartList: CartProductType[];
 }
 
-const ProductItem = ({
-  product,
-  handdleAddProductToCart,
-  cartList,
-  handdleIncreaseProductToCart,
-  handdleDecreaseProductToCart,
-}: ProductItemProps) => {
+const ProductItem = ({ product }: ProductItemProps) => {
+  const {
+    cartList,
+    handleAddProductToCart,
+    handleDecreaseProductToCart,
+    handleIncreaseProductToCart,
+  } = useCartContext();
   const hasProductInCart = cartList.find((p) => p.name === product.name);
-
   return (
     <div className="flex flex-col ">
       <div
@@ -35,7 +30,7 @@ const ProductItem = ({
         {!hasProductInCart ? (
           <button
             className=" hover:text-button-color w-40 flex gap-3 bg-white py-2 px-4  absolute bottom-[-22px] border border-solid border-button-color rounded-full"
-            onClick={() => handdleAddProductToCart({ ...product, quantity: 1 })}
+            onClick={() => handleAddProductToCart({ ...product, quantity: 1 })}
           >
             <ShoppingCartIcon className="text-button-color" />
             <p className="font-semibold">Add to Cart</p>
@@ -47,13 +42,13 @@ const ProductItem = ({
             rounded-full justify-between"
           >
             <button
-              onClick={() => handdleDecreaseProductToCart(hasProductInCart)}
+              onClick={() => handleDecreaseProductToCart(hasProductInCart)}
             >
               <DiamondMinus className="hover:fill-white hover:text-button-color" />
             </button>
             <span>{hasProductInCart.quantity}</span>
             <button
-              onClick={() => handdleIncreaseProductToCart(hasProductInCart)}
+              onClick={() => handleIncreaseProductToCart(hasProductInCart)}
             >
               <DiamondPlus className="hover:fill-white hover:text-button-color" />
             </button>

@@ -4,12 +4,12 @@ import { CartProductType } from "../utils/types";
 import formatCurency from "../utils/format-currency";
 
 interface ConfirmedOrderModelProps {
-  productList: CartProductType[];
+  cartList: CartProductType[];
   totalPrice: number;
 }
 
 const ConfirmedOrderModel = ({
-  productList,
+  cartList,
   totalPrice,
 }: ConfirmedOrderModelProps) => {
   return (
@@ -26,7 +26,7 @@ const ConfirmedOrderModel = ({
         </div>
 
         <div className="bg-rose-50 flex flex-col px-5">
-          <ConfirmedProdutList productList={productList} />
+          <ConfirmedProdutList cartList={cartList} />
           <div className="flex justify-between py-4">
             <p className="font-semibold text-md">Order Total</p>
             <p className="font-bold text-xl">{formatCurency(totalPrice)}</p>

@@ -1,42 +1,38 @@
 import { TreeDeciduous, XIcon } from "lucide-react";
-import { CartProductType } from "../utils/types";
 import EmptyCart from "./empty-cart";
 import { useEffect, useState } from "react";
 import formatCurency from "../utils/format-currency";
 import ConfirmedOrderModel from "./confirmed-order-model";
+import { useCartContext } from "../contexts/cart-context";
 
-interface CartProps {
-  productList: CartProductType[];
-  handleDeleteProductToCart: (ProductType: CartProductType) => void;
-}
-
-const Cart = ({ productList, handleDeleteProductToCart }: CartProps) => {
+const Cart = () => {
+  const { cartList, handleDeleteProductToCart } = useCartContext();
   const [totalPrice, setTotalPrice] = useState(0);
   const [orderConfirmed, setOrderConfirmed] = useState(false);
 
   useEffect(() => {
     const handleGetTotalPrice = () => {
       let total = 0;
-      productList.map((product) => {
+      cartList.map((product) => {
         total += product.price * product.quantity;
       });
 
       return setTotalPrice(total);
     };
     handleGetTotalPrice();
-  }, [productList]);
+  }, [cartList]);
 
   const handleOpenConfirmedOrderModel = () => setOrderConfirmed(true);
 
   return (
     <div className=" rounded-lg px-6 py-10 gap-6 w-[500px] h-max max-h-[700px] flex bg-white flex-col items-center">
       <h2 className="w-full font-bold text-2xl text-button-color">
-        {`Your Cart (${productList ? productList.length : "0"}`})
+        {`Your Cart (${cartList ? cartList.length : "0"}`})
       </h2>
       <div className="flex flex-col  w-full items-center overflow-y-scroll [&::-webkit-scrollbar]:hidden ">
-        {productList.length !== 0 ? (
+        {cartList.length !== 0 ? (
           <>
-            {productList.map((product, index) => (
+            {cartList.map((product, index) => (
               <div
                 key={product.name + index}
                 className="flex w-full justify-between items-center border-t py-6 first:border-none"
@@ -71,7 +67,7 @@ const Cart = ({ productList, handleDeleteProductToCart }: CartProps) => {
           <EmptyCart />
         )}
       </div>
-      {productList.length !== 0 && (
+      {cartList.length !== 0 && (
         <div className="flex flex-col gap-6 w-full items-center border-t pt-6">
           <div className="flex w-full justify-between text-rose-900">
             <p className="text-lg">Order Total</p>
@@ -92,10 +88,7 @@ const Cart = ({ productList, handleDeleteProductToCart }: CartProps) => {
         </div>
       )}
       {orderConfirmed && (
-        <ConfirmedOrderModel
-          productList={productList}
-          totalPrice={totalPrice}
-        />
+        <ConfirmedOrderModel cartList={cartList} totalPrice={totalPrice} />
       )}
     </div>
   );
