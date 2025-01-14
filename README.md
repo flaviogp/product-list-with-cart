@@ -6,14 +6,14 @@
 
   <h2 align="center">Product list with cart</h2>
   <p align="center">
-    <a href="https://www.frontendmentor.io/challenges/expenses-chart-component-e7yJBUdjwt"><strong>Frontend Mentor Challenge</strong></a>
+    <a href="https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d"><strong>Frontend Mentor Challenge</strong></a>
     <br />
     <br />
-    <a href="https://bright-panda-515a82.netlify.app/">View Demo</a>
+    <a href="https://productlistwcart.netlify.app/">View Demo</a>
     ·
-    <a href="https://github.com/flaviogp/huddle-landing-page-challenge/issues">Report Bug</a>
+    <a href="https://github.com/flaviogp/product-list-with-cart/issues">Report Bug</a>
     ·
-    <a href="https://github.com/flaviogp/huddle-landing-page-challenge/issues">Request Feature</a>
+    <a href="https://github.com/flaviogp/product-list-with-cart/issues">Request Feature</a>
   </p>
 </div>
 
