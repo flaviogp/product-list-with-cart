@@ -34,7 +34,7 @@
 
 <div align="center">
 
-![](./design/desktop-preview.jpg)
+![](./design/desktop-design-empty.jpg)
 
 </div>
 
