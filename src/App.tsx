@@ -9,7 +9,7 @@ function App() {
 
   return (
     <CartContextProvider>
-      <div className="flex p-10 gap-8">
+      <div className="flex flex-col items-center p-10 gap-8 lg:flex-row lg:items-start">
         <ProductList products={products} />
         <Cart />
       </div>

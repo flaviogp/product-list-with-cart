@@ -25,7 +25,7 @@ const Cart = () => {
   const handleOpenConfirmedOrderModel = () => setOrderConfirmed(true);
 
   return (
-    <div className=" rounded-lg px-6 py-10 gap-6 w-[500px] h-max max-h-[700px] flex bg-white flex-col items-center">
+    <div className=" rounded-lg px-6 py-10 gap-6 min-w-[350px] md:w-[500px] h-max max-h-[700px] flex bg-white flex-col items-center">
       <h2 className="w-full font-bold text-2xl text-button-color">
         {`Your Cart (${cartList ? cartList.length : "0"}`})
       </h2>
@@ -88,7 +88,11 @@ const Cart = () => {
         </div>
       )}
       {orderConfirmed && cartList.length >= 1 && (
-        <ConfirmedOrderModel cartList={cartList} totalPrice={totalPrice} />
+        <ConfirmedOrderModel
+          cartList={cartList}
+          totalPrice={totalPrice}
+          setOrderConfirmed={setOrderConfirmed}
+        />
       )}
     </div>
   );
