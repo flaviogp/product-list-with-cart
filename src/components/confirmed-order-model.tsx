@@ -2,6 +2,7 @@ import { CheckIcon } from "lucide-react";
 import ConfirmedProdutList from "./confirmed-product-list";
 import { CartProductType } from "../utils/types";
 import formatCurency from "../utils/format-currency";
+import { useCartContext } from "../contexts/cart-context";
 
 interface ConfirmedOrderModelProps {
   cartList: CartProductType[];
@@ -12,6 +13,13 @@ const ConfirmedOrderModel = ({
   cartList,
   totalPrice,
 }: ConfirmedOrderModelProps) => {
+  const { handleEmptyCart } = useCartContext();
+
+  const sendOrder = () => {
+    // There should be a code here to send the order to the backend or somewhere else.
+    handleEmptyCart();
+  };
+
   return (
     <div className="fixed h-[100%] w-[100%] bg-black/50 top-0 left-0 flex items-center justify-center">
       <div className="bg-white flex flex-col space-y-7 p-5 rounded-lg w-[500px] max-h-[600px]">
@@ -32,7 +40,10 @@ const ConfirmedOrderModel = ({
             <p className="font-bold text-xl">{formatCurency(totalPrice)}</p>
           </div>
         </div>
-        <button className="bg-button-color hover:bg-button-color-hover p-3 rounded-full text-lg text-white">
+        <button
+          className="bg-button-color hover:bg-button-color-hover p-3 rounded-full text-lg text-white"
+          onClick={sendOrder}
+        >
           Start new Order
         </button>
       </div>

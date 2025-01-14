@@ -7,6 +7,7 @@ type CartContextType = {
   handleIncreaseProductToCart: (product: CartProductType) => void;
   handleDecreaseProductToCart: (product: CartProductType) => void;
   handleDeleteProductToCart: (product: CartProductType) => void;
+  handleEmptyCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | null>(null);
@@ -51,6 +52,8 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
     setCartList([...oldList]);
   };
 
+  const handleEmptyCart = () => setCartList([]);
+
   return (
     <CartContext.Provider
       value={{
@@ -59,6 +62,7 @@ export const CartContextProvider = ({ children }: React.PropsWithChildren) => {
         handleDecreaseProductToCart,
         handleIncreaseProductToCart,
         handleDeleteProductToCart,
+        handleEmptyCart,
       }}
     >
       {children}

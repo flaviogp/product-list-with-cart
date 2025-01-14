@@ -87,7 +87,7 @@ const Cart = () => {
           </button>
         </div>
       )}
-      {orderConfirmed && (
+      {orderConfirmed && cartList.length >= 1 && (
         <ConfirmedOrderModel cartList={cartList} totalPrice={totalPrice} />
       )}
     </div>
