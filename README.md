@@ -1,50 +1,108 @@
-# React + TypeScript + Vite
+<div id="top"></div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+<div align="center">
 
-Currently, two official plugins are available:
+  <img src="https://www.frontendmentor.io/static/images/logo-mobile.svg" alt="frontendmentor" width="80">
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+  <h2 align="center">Product list with cart</h2>
+  <p align="center">
+    <a href="https://www.frontendmentor.io/challenges/expenses-chart-component-e7yJBUdjwt"><strong>Frontend Mentor Challenge</strong></a>
+    <br />
+    <br />
+    <a href="https://bright-panda-515a82.netlify.app/">View Demo</a>
+    ·
+    <a href="https://github.com/flaviogp/huddle-landing-page-challenge/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/flaviogp/huddle-landing-page-challenge/issues">Request Feature</a>
+  </p>
+</div>
 
-## Expanding the ESLint configuration
+<!-- Bagdes -->
+<div align="center">
+  <!-- Profile -->
+  <a href="https://www.frontendmentor.io/profile/flaviogp">
+    <img src="https://img.shields.io/badge/Profile-Flavio%20gomes-07043B?style=for-the-badge&logo=frontendmentor" alt="Flavio Profile">
+  </a>
+  <!-- Status -->
+    <a href="#">
+    <img src="https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge" alt="Status Completed">
+  </a>
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+</div>
 
-- Configure the top-level `parserOptions` property like this:
+#
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+<div align="center">
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+![](./design/desktop-preview.jpg)
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+</div>
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
+This is a solution to the [Product list with cart](https://www.frontendmentor.io/challenges/product-list-with-cart-5MmqLVAp_d).Frontend Mentor challenges help you improve your coding skills by building realistic projects.
+
+<h2 align="center">Links</h2>
+
+- Solution URL: [Product list with cart(ReactJs/TypeScript) | Frontend Mentor](https://www.frontendmentor.io/solutions/product-list-with-cart-main-reactjs-tailwindcss-oZ6Qm3JHKX)
+
+- Live Site URL: [ Click here ](https://productlistwcart.netlify.app/)
+
+<br>
+
+## Table of contents
+
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+- [My process](#my-process)
+  - [Built with](#built-with)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
+
+## Overview
+
+### The challenge
+
+Your users should be able to:
+
+- Add items to the cart and remove them
+- Increase/decrease the number of items in the cart
+- See an order confirmation modal when they click "Confirm Order"
+- Reset their selections when they click "Start New Order"
+- Navigate the whole project and perform all actions using only their keyboard
+- View the optimal layout for the interface depending on their device's screen size
+- See hover and focus states for all interactive elements on the page
+
+## My process
+
+### Built with
+
+<!-- Bagdes -->
+
+![](https://img.shields.io/badge/reactjs-23272F?style=for-the-badge&logo=react)
+![](https://img.shields.io/badge/typescript-23272F?style=for-the-badge&logo=typescript)
+![](https://img.shields.io/badge/tailwindcss-23272F?style=for-the-badge&logo=tailwindcss)
+
+- React
+- Tailwind
+- Semantic HTML5 markup
+- TypeScript
+
+### Useful resources
+
+- [React](https://react.dev/learn)
+- [Tailwind](https://tailwindcss.com/docs/installation)
+- [TypeScript](https://www.typescriptlang.org/docs/)
+
+## Author
+
+- Frontend Mentor - [@flaviogp](https://www.frontendmentor.io/profile/flaviogp)
+
+## Acknowledgments
+
+### Run the project
+
+To run the client, you need to run the following command:
+
+```bash
+npm install
+npm run dev
 ```
